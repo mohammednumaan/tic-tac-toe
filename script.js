@@ -1,26 +1,31 @@
+// Selecting Elements from HTML
+
 const gameContainer = document.querySelector('.game-board-container')
 const restartButton = document.querySelector('.restart')
+
+
+// game IIFE
 
 const gameBoard = (() => {
     
     // player objects
 
     let player1 = {
-
         name: 'playerOne',
         choice : 'X'
     }
 
     let player2 = {
-
         name: 'playerTwo',
         choice : 'O'
     }
+
 
     // board array
 
     board = ['', '', '', '', '', '','','','']
     let turn = true
+
 
     // event handler
 
@@ -82,6 +87,10 @@ const gameBoard = (() => {
 
     }
 
+
+    // winner display
+
+
     const winnerDiv = (winner) => {
         const winnerDisplay = document.createElement('div')
         winnerDisplay.classList.add('winner')
@@ -91,6 +100,9 @@ const gameBoard = (() => {
         }
         gameContainer.appendChild(winnerDisplay)
     }
+    
+
+    // draw game logic
 
     const drawGame = () => {
         for (let i = 0; i < board.length; i++){
@@ -98,6 +110,9 @@ const gameBoard = (() => {
             winnerDiv('Draw')
         }
     }
+
+
+    // checking winner
 
     const gameLoop = () => {
 
@@ -137,12 +152,18 @@ const gameBoard = (() => {
         }
     }
 
+
+    // restart 
+
+    
     const restartGame = () => {
         board = ['', '', '', '', '', '','','','']
         turn = true
         window.location.reload()
 
     }
+
+    // invoke
 
     generateBoard();
 
