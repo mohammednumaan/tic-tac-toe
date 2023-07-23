@@ -22,6 +22,26 @@ body{
     font-family: sans-serif;
 }
 
+/* current player div */
+
+.current-player{
+
+    width: 140px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 20px;
+    color: #E94B3CFF;
+    background-color: #E0E6FF;
+    position: fixed;
+    margin-top: -120px;
+    margin-left: 465px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: 800;
+}
+
 
 /* tic-tac-toe board */
 
@@ -51,9 +71,9 @@ body{
 
 .button-design{
     position: fixed;
-    width: 10px;
-    height: 110px;
-    margin-top: -190px;
+    width: 8px;
+    height: 130px;
+    margin-top: -205px;
     margin-left: 530px;
     background-color:#E0E6FF;
     border: 3px solid #2D2926FF;
@@ -62,7 +82,7 @@ body{
 
 .restart{
     position: fixed;
-    margin-top: -150px;
+    margin-top: -190px;
     margin-left: 489px;
     border-radius: 15px;
     font-size: 15px;

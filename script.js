@@ -2,6 +2,7 @@
 
 const gameContainer = document.querySelector('.game-board-container')
 const restartButton = document.querySelector('.restart')
+const currentPlayerDiv = document.querySelector('.current-player')
 
 
 // game IIFE
@@ -35,11 +36,16 @@ const gameBoard = (() => {
         for (let i = 0; i < board.length; i++){
             if (turn){
                 addMark(e)
+                currentPlayerDiv.textContent = "Player 1's Turn"
                 turn = false;
+                currentPlayerDiv.textContent = "Player 2's Turn"
+                
             }
             else {
                 nextMark(e)
+                currentPlayerDiv.textContent = "Player 2's Turn"
                 turn = true;
+                currentPlayerDiv.textContent = "Player 1's Turn"
             }
         } 
 
@@ -108,6 +114,7 @@ const gameBoard = (() => {
         for (let i = 0; i < board.length; i++){
             if (board.every(choice => choice !== ''))
             winnerDiv('Draw')
+  
         }
     }
 
