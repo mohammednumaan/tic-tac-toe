@@ -1,4 +1,5 @@
 const gameContainer = document.querySelector('.game-board-container')
+const restartButton = document.querySelector('.restart')
 
 const gameBoard = (() => {
     
@@ -31,12 +32,18 @@ const gameBoard = (() => {
                 addMark(e)
                 turn = false;
             }
-            else{
+            else {
                 nextMark(e)
                 turn = true;
             }
         } 
+
+        if (gameLoop()){
+            winnerDiv()
+            
+        }
     }
+    
     
 
     // generates 3X3 board
@@ -49,11 +56,11 @@ const gameBoard = (() => {
             buttons.id = i;
             buttons.textContent = board[i]
             buttons.addEventListener('click', eventHandler)
-
+            restartButton.addEventListener('click', restartGame)
             gameContainer.appendChild(buttons)
+
         }
     }
-
 
 
     // player1 mark
@@ -75,8 +82,68 @@ const gameBoard = (() => {
 
     }
 
-    // invoke
-    
+    const winnerDiv = (winner) => {
+        const winnerDisplay = document.createElement('div')
+        winnerDisplay.classList.add('winner')
+        winnerDisplay.textContent = `${winner} Won The Game :}`
+        if (winner === 'Draw'){
+            winnerDisplay.textContent = `${winner}/Tie Game :}`
+        }
+        gameContainer.appendChild(winnerDisplay)
+    }
+
+    const drawGame = () => {
+        for (let i = 0; i < board.length; i++){
+            if (board.every(choice => choice !== ''))
+            winnerDiv('Draw')
+        }
+    }
+
+    const gameLoop = () => {
+
+        /*
+        0 | 1 | 2
+        3 | 4 | 5
+        6 | 7 | 8
+        */
+
+        if (board[0] === board[1] && board[0] === board[2] && board[0] !== ''){
+            winnerDiv(board[1])          
+        }
+        else if (board[3] === board[4] && board[3] === board[5] && board[3] !== ''){
+            winnerDiv(board[4])
+        }
+        else if (board[6] === board[7] && board[6] === board[8] && board[6] !== ''){
+            winnerDiv(board[7])
+        }
+        else if (board[0] === board[3] && board[0] === board[6] && board[0] !== ''){
+            winnerDiv(board[3])
+        }
+        else if (board[1] === board[4] && board[1] === board[7] && board[1] !== ''){
+            winnerDiv(board[4])
+        }
+        else if (board[2] === board[5] && board[2] === board[8] && board[2] !== ''){
+            winnerDiv(board[5])
+        }
+        else if (board[0] === board[4] && board[0] === board[8] && board[0] !== ''){
+            winnerDiv(board[4])
+        }
+        else if (board[2] === board[4] && board[2] === board[6] && board[2] !== ''){
+            winnerDiv(board[4])
+        }
+
+        else{
+            drawGame()
+        }
+    }
+
+    const restartGame = () => {
+        board = ['', '', '', '', '', '','','','']
+        turn = true
+        window.location.reload()
+
+    }
+
     generateBoard();
 
 })();

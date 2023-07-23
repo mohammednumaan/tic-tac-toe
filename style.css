@@ -1,14 +1,96 @@
+body{
+    margin: 0;
+    background-color: #E94B3CFF;
+}
+.header{
+    margin:0;
+    margin-top: -25px;
+    height: 100px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    background-color: #2D2926FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E94B3CFF;
+}   
+
+.header > h1{
+    padding-top: 18px;
+}
+
+.winner{
+    width: 300px;
+    height: 30px;
+    padding: 20px;
+    margin: 0;
+    margin-top: -700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #E0E6FF;
+    background-color: #2D2926FF;
+    color: #E94B3CFF;
+    border-radius: 20px;
+    font-family: sans-serif;
+    font-weight: 800;
+
+}
+
+.winner:hover{
+    background-color: lightsalmon;
+}
+
+
+
+
+
 .game-board-container{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     width:300px;
+
+    margin-left: 615px;
+    margin-top:190px;
     
 }
 
 .cells{
     width: 100px;
     height: 100px;
-    border: 1px solid black;
+    border: 1px solid #2D2926FF;
+    color: #E94B3CFF;
+    font-size: 40px;
+}
+
+
+.restart{
+    position: fixed;
+    margin-top: -150px;
+    margin-left: 489px;
+    border-radius: 15px;
+    font-size: 15px;
+    border: 3px solid #2D2926FF;
+    background-color: #E0E6FF;
+    color: #E94B3CFF;
+    font-family: sans-serif;
+    font-weight: 800;
+    padding: 7px;
+   
+}
+
+.restart:hover{
+    background-color: lightsalmon;
+}
+
+.button-design{
+    position: fixed;
+    width: 10px;
+    height: 110px;
+    margin-top: -190px;
+    margin-left: 530px;
+    background-color:#E0E6FF;
+    border: 3px solid #2D2926FF;
+    border-radius: 15px;
 }
