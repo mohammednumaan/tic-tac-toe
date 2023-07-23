@@ -4,6 +4,11 @@ const gameContainer = document.querySelector('.game-board-container')
 const restartButton = document.querySelector('.restart')
 const currentPlayerDiv = document.querySelector('.current-player')
 
+// custom player name
+
+const playerOne = prompt('What do you want ur name to be dislayed as (P1)? ')
+const playerTwo = prompt('What do you want ur name to be dislayed as (P2)? ')
+
 
 // game IIFE
 
@@ -12,13 +17,23 @@ const gameBoard = (() => {
     // player objects
 
     let player1 = {
-        name: 'playerOne',
+        name: playerOne,
         choice : 'X'
     }
 
     let player2 = {
-        name: 'playerTwo',
+        name: playerTwo,
         choice : 'O'
+    }
+
+
+    // check if player name == null
+    
+    if (player1.name == null){
+        player1.name = 'Player 1'
+    }
+    if (player2.name == null){
+        player2.name = 'Player 2'
     }
 
 
@@ -36,16 +51,16 @@ const gameBoard = (() => {
         for (let i = 0; i < board.length; i++){
             if (turn){
                 addMark(e)
-                currentPlayerDiv.textContent = "Player 1's Turn"
+                currentPlayerDiv.textContent = `${player1.name}'s Turn!`
                 turn = false;
-                currentPlayerDiv.textContent = "Player 2's Turn"
+                currentPlayerDiv.textContent = `${player2.name}'s Turn!`
                 
             }
             else {
                 nextMark(e)
-                currentPlayerDiv.textContent = "Player 2's Turn"
+                currentPlayerDiv.textContent = `${player2.name}'s Turn!`
                 turn = true;
-                currentPlayerDiv.textContent = "Player 1's Turn"
+                currentPlayerDiv.textContent = `${player1.name}'s Turn!`
             }
         } 
 
