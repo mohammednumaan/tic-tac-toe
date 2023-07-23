@@ -28,11 +28,11 @@ const gameBoard = (() => {
 
 
     // check if player name == null
-    
-    if (player1.name == null){
+
+    if (player1.name == null || player1.name == '' ){
         player1.name = 'Player 1'
     }
-    if (player2.name == null){
+    if (player2.name == null || player2.name == ''){
         player2.name = 'Player 2'
     }
 
@@ -49,24 +49,27 @@ const gameBoard = (() => {
     const eventHandler = (e) => {
         
         for (let i = 0; i < board.length; i++){
-            if (turn){
-                addMark(e)
-                currentPlayerDiv.textContent = `${player1.name}'s Turn!`
-                turn = false;
-                currentPlayerDiv.textContent = `${player2.name}'s Turn!`
-                
-            }
-            else {
-                nextMark(e)
-                currentPlayerDiv.textContent = `${player2.name}'s Turn!`
-                turn = true;
-                currentPlayerDiv.textContent = `${player1.name}'s Turn!`
+            if (e.target.textContent === ''){
+
+                if (turn){
+                    addMark(e)
+                    currentPlayerDiv.textContent = `${player1.name}'s Turn!`
+                    turn = false;
+                    currentPlayerDiv.textContent = `${player2.name}'s Turn!`
+                    
+                }
+                else {
+                    nextMark(e)
+                    currentPlayerDiv.textContent = `${player2.name}'s Turn!`
+                    turn = true;
+                    currentPlayerDiv.textContent = `${player1.name}'s Turn!`
+                }
+
             }
         } 
 
         if (gameLoop()){
             winnerDiv()
-            
         }
     }
     
@@ -80,12 +83,16 @@ const gameBoard = (() => {
             const buttons = document.createElement('button');
             buttons.classList.add('cells')
             buttons.id = i;
-            buttons.textContent = board[i]
+            buttons.textContent = ''
             buttons.addEventListener('click', eventHandler)
             restartButton.addEventListener('click', restartGame)
             gameContainer.appendChild(buttons)
 
+
         }
+
+
+       
     }
 
 
