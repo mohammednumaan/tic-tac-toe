@@ -1,0 +1,14 @@
+.game-board-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width:300px;
+    
+}
+
+.cells{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
