@@ -16,24 +16,22 @@ const gameBoard = (() => {
     
     // player objects
 
-    let player1 = {
-        name: playerOne,
-        choice : 'X'
+    const playerDetails = (name, choice) => {
+
+        return {name, choice}
     }
 
-    let player2 = {
-        name: playerTwo,
-        choice : 'O'
-    }
+    let userOne = playerDetails(playerOne, 'X')
+    let userTwo = playerDetails(playerTwo, 'O')
 
 
     // check if player name == null
 
-    if (player1.name == null || player1.name == '' ){
-        player1.name = 'Player 1'
+    if (userOne.name == null || userOne.name == '' ){
+        userOne.name = 'Player 1'
     }
-    if (player2.name == null || player2.name == ''){
-        player2.name = 'Player 2'
+    if (userTwo.name == null || userTwo.name == ''){
+        userTwo.name = 'Player 2'
     }
 
 
@@ -53,16 +51,16 @@ const gameBoard = (() => {
 
                 if (turn){
                     addMark(e)
-                    currentPlayerDiv.textContent = `${player1.name}'s Turn!`
+                    currentPlayerDiv.textContent = `${userOne.name}'s Turn!`
                     turn = false;
-                    currentPlayerDiv.textContent = `${player2.name}'s Turn!`
+                    currentPlayerDiv.textContent = `${userTwo.name}'s Turn!`
                     
                 }
                 else {
                     nextMark(e)
-                    currentPlayerDiv.textContent = `${player2.name}'s Turn!`
+                    currentPlayerDiv.textContent = `${userTwo.name}'s Turn!`
                     turn = true;
-                    currentPlayerDiv.textContent = `${player1.name}'s Turn!`
+                    currentPlayerDiv.textContent = `${userOne.name}'s Turn!`
                 }
 
             }
@@ -96,10 +94,10 @@ const gameBoard = (() => {
     }
 
 
-    // player1 mark
+    // userOne mark
 
     const addMark = (e) => {
-        e.target.textContent = player1.choice
+        e.target.textContent = userOne.choice
         let index = e.target.getAttribute('id')
         board.splice(index, 1, 'X')
 
@@ -109,7 +107,7 @@ const gameBoard = (() => {
     // player 2 mark
 
     const nextMark = (e) => {
-        e.target.textContent = player2.choice
+        e.target.textContent = userTwo.choice
         let index = e.target.getAttribute('id')
         board.splice(index, 1, 'O')
 
