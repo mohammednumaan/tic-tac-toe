@@ -65,6 +65,10 @@ body{
     font-size: 40px;
 }
 
+.game-over{
+    border: 1px solid white;
+}
+
 
 
 /* miscellaneous */
@@ -75,8 +79,8 @@ body{
     height: 130px;
     margin-top: -205px;
     margin-left: 530px;
-    background-color:#E0E6FF;
-    border: 3px solid #2D2926FF;
+    background-color:#E94B3CFF;
+    border: 3px solid white;
     border-radius: 15px;
 }
 

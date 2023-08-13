@@ -121,9 +121,13 @@ const gameBoard = (() => {
         const winnerDisplay = document.createElement('div')
         winnerDisplay.classList.add('winner')
         winnerDisplay.textContent = `${winner} Won The Game :}`
+
         if (winner === 'Draw'){
             winnerDisplay.textContent = `${winner}/Tie Game :}`
         }
+
+        disableGameButton()
+        currentPlayerDiv.textContent = 'Game Over!'
         gameContainer.appendChild(winnerDisplay)
     }
     
@@ -138,6 +142,13 @@ const gameBoard = (() => {
         }
     }
 
+    const colorWinner = (index1, index2, index3) => {
+        let gameCells = gameContainer.childNodes
+        gameCells[index1].style.backgroundColor = '#2D2926FF'
+        gameCells[index2].style.backgroundColor = '#2D2926FF'
+        gameCells[index3].style.backgroundColor = '#2D2926FF'
+    }
+
 
     // checking winner
 
@@ -150,28 +161,37 @@ const gameBoard = (() => {
         */
 
         if (board[0] === board[1] && board[0] === board[2] && board[0] !== ''){
-            winnerDiv(board[1])          
+            winnerDiv(board[1]) 
+            colorWinner(0, 1, 2)
+
         }
         else if (board[3] === board[4] && board[3] === board[5] && board[3] !== ''){
             winnerDiv(board[4])
+            colorWinner(3, 4, 5)
         }
         else if (board[6] === board[7] && board[6] === board[8] && board[6] !== ''){
             winnerDiv(board[7])
+            colorWinner(6, 7, 8)
         }
         else if (board[0] === board[3] && board[0] === board[6] && board[0] !== ''){
             winnerDiv(board[3])
+            colorWinner(0, 3, 6)
         }
         else if (board[1] === board[4] && board[1] === board[7] && board[1] !== ''){
             winnerDiv(board[4])
+            colorWinner(1, 4, 7)
         }
         else if (board[2] === board[5] && board[2] === board[8] && board[2] !== ''){
             winnerDiv(board[5])
+            colorWinner(2, 5, 8)
         }
         else if (board[0] === board[4] && board[0] === board[8] && board[0] !== ''){
             winnerDiv(board[4])
+            colorWinner(0, 4, 8)
         }
         else if (board[2] === board[4] && board[2] === board[6] && board[2] !== ''){
             winnerDiv(board[4])
+            colorWinner(2, 4, 6)
         }
 
         else{
@@ -188,6 +208,17 @@ const gameBoard = (() => {
         turn = true
         window.location.reload()
 
+    }
+
+    // disable game buttons 
+
+    const disableGameButton = () => {
+        let gameButtons = gameContainer.childNodes
+        console.log(gameButtons)
+        gameButtons.forEach(button => {
+            button.disabled = true;
+            button.classList.add('game-over')
+        })
     }
 
     // invoke
